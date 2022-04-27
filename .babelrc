@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    ["babel-plugin-module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "components": "./src/components",
+        "constants": "./src/constants",
+        "ui": "./src/ui"
+      }
+    }]
+  ],
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react",
+    "@babel/preset-typescript"
+  ]
+}
