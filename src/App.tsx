@@ -1,10 +1,14 @@
 import React from "react";
+import { ThemeProvider } from 'styled-components'
+import theme from "constants/theme";
 
 function App() {
   return (
-    <div className="App">
-      App is under construction
-    </div>
+    <ThemeProvider {...{ theme }}>
+      <div>
+        App is under construction
+      </div>
+    </ThemeProvider>
   );
 }
 
