@@ -8,6 +8,7 @@ export default {
     desktop: `@media screen and (min-width: ${breakpoints[2]}px)`,
   },
   colors: {
+    borderPrimary: "#afafaf",
     buttonPrimary: "#0000ff",
     cardPrimary: "#dcd8d8",
     textPrimary: "#1c1919",
@@ -19,7 +20,8 @@ export default {
   },
   zIndices: {
     overlay: 1,
-    modal: 2,
+    header: 2,
+    modal: 3,
   },
   space: Array.from({ length: 51 }, (_, i) => i * 4),
   typography: {

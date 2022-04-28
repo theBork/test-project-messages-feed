@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
-import { formatRelative, parseISO } from "date-fns";
+import formatRelative from "date-fns/formatRelative";
+import parseISO from "date-fns/parseISO";
 import ruLocale from "date-fns/locale/ru";
 import { Message } from "api/types";
 import { MessageCardAlign } from "./MessageCard.types";
