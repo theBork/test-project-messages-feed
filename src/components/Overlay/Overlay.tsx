@@ -6,7 +6,7 @@ interface OverlayProps {
 }
 const Overlay: React.FC<PropsWithChildren<OverlayProps>> = (props) => {
   const { children, onClick } = props;
-  return <Styled.Overlay {...{ onClick }} >{children}</Styled.Overlay>;
+  return <Styled.Overlay {...{ onClick }}>{children}</Styled.Overlay>;
 };
 
 export default Overlay;

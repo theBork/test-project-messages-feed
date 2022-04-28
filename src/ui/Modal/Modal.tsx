@@ -1,5 +1,6 @@
 import React, { MouseEvent, PropsWithChildren } from "react";
 import Overlay from "components/Overlay";
+import Title from "components/Title";
 import Button from "ui/Button";
 import useTheme from "hooks/useTheme";
 import CloseIcon from "../../icons/CloseIcon";
@@ -22,7 +23,7 @@ const Modal: React.FC<PropsWithChildren<ModalProps>> = (props) => {
         <Styled.CloseButtonWrapper>
           <CloseIcon size="m" baseColor={simpleBlack} />
         </Styled.CloseButtonWrapper>
-        {title && <Styled.Title>{title}</Styled.Title>}
+        {title && <Title type="h1">{title}</Title>}
         {children}
         {actionButtons && actionButtons.length > 0 && (
           <Styled.ActionButtonsContainer>

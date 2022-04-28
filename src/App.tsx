@@ -1,18 +1,24 @@
 import React from "react";
+import { Router } from "@reach/router";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import theme from "constants/theme";
+import MessagesPage from "./pages/MessagesPage/MessagesPage";
 
 const GlobalStyle = createGlobalStyle`
-  * { box-sizing: border-box }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 `;
 
 function App() {
   return (
     <ThemeProvider {...{ theme }}>
       <GlobalStyle />
-      <div>
-        App is under construction
-      </div>
+      <Router>
+        <MessagesPage path="/" />
+      </Router>
     </ThemeProvider>
   );
 }

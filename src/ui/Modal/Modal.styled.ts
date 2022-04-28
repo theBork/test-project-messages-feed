@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Box from "ui/Box";
 import { MODAL_PADDING_DESKTOP, MODAL_PADDING_MOBILE, MODAL_PADDING_TABLET } from "constants/space";
-import Text from "ui/Text";
 
 export const Wrapper = styled(Box).attrs({
   bg: "simpleWhite",
@@ -41,12 +40,6 @@ export const CloseButtonWrapper = styled(Box).attrs({
     opacity: 0.6;
   }
 `;
-
-export const Title = styled(Text).attrs({
-  variant: "h2",
-  color: "simpleBlack",
-  pb: 4,
-})``;
 
 export const ActionButtonsContainer = styled(Box).attrs({
   pt: 4,
