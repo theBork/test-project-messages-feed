@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import Box from "ui/Box";
 import Text from "ui/Text";
+import { MessageCardAlign } from "components/MessagesList/components/MessageCard/MessageCard.types";
 
-export const Wrapper = styled(Box)`
+export const MessageInfo = styled(Box)`
+  width: 100%;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
 `;
 
 export const MessageBody = styled(Box).attrs({
@@ -16,8 +17,23 @@ export const MessageBody = styled(Box).attrs({
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   border-radius: 8px;
+`;
+
+interface AlignProp { align?: MessageCardAlign }
+
+export const Wrapper = styled(Box)<AlignProp>`
+  display: flex;
+  flex-direction: column;
+  align-items: ${({ align }) => (align === "left" ? "flex-start" : "flex-end")};
+  
+  & ${MessageInfo} {
+    justify-content: ${({ align }) => (align === "left" ? "flex-start" : "flex-end")};
+  };
+
+  & ${MessageBody} {
+    align-items: ${({ align }) => (align === "left" ? "flex-start" : "flex-end")};
+  };
 `;
 
 export const MessageText = styled(Text).attrs({
@@ -43,10 +59,4 @@ export const MessageAuthor = styled(Text).attrs({
   &:hover {
     opacity: 0.6;
   }
-`;
-
-export const MessageInfo = styled(Box)`
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
 `;

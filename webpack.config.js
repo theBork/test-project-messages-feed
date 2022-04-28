@@ -5,6 +5,7 @@ module.exports = {
   mode: "development",
   output: {
     path: path.resolve(process.cwd(), "dist"),
+    publicPath: '/',
     filename: "bundle.js",
   },
   resolve: {
@@ -61,5 +62,6 @@ module.exports = {
     },
     compress: true,
     port: 3000,
+    historyApiFallback: true,
   },
 }
