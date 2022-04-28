@@ -17,10 +17,12 @@ const Modal: React.FC<PropsWithChildren<ModalProps>> = (props) => {
   const { actionButtons, children, onClose, title } = props;
   const { colors: { simpleBlack } } = useTheme();
 
+  const handleModalClick = (e: MouseEvent<HTMLDivElement>) => e.stopPropagation();
+
   return (
     <Overlay onClick={onClose}>
-      <Styled.Wrapper>
-        <Styled.CloseButtonWrapper>
+      <Styled.Wrapper onClick={handleModalClick}>
+        <Styled.CloseButtonWrapper onClick={onClose}>
           <CloseIcon size="m" baseColor={simpleBlack} />
         </Styled.CloseButtonWrapper>
         {title && <Title type="h1">{title}</Title>}
@@ -28,7 +30,15 @@ const Modal: React.FC<PropsWithChildren<ModalProps>> = (props) => {
         {actionButtons && actionButtons.length > 0 && (
           <Styled.ActionButtonsContainer>
             {actionButtons.map(button => (
-              <Button key={button.title} size="m" fill={button.fill} onClick={button.onClick}>{button.title}</Button>
+              <Button
+                key={button.title}
+                size="m"
+                disabled={button.disabled}
+                fill={button.fill}
+                onClick={button.onClick}
+              >
+                {button.title}
+              </Button>
             ))}
           </Styled.ActionButtonsContainer>
         )}

@@ -1,17 +1,19 @@
 import styled from "styled-components";
+import { zIndex } from "styled-system";
 import Box from "ui/Box";
 import { MODAL_PADDING_DESKTOP, MODAL_PADDING_MOBILE, MODAL_PADDING_TABLET } from "constants/space";
 
 export const Wrapper = styled(Box).attrs({
   bg: "simpleWhite",
   p: [MODAL_PADDING_MOBILE, MODAL_PADDING_TABLET, MODAL_PADDING_DESKTOP],
+  zIndex: "modal",
 })`
+  ${zIndex};
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 800px;
-  min-width: 50%;
   max-width: 90%;
   max-height: 90%;
   

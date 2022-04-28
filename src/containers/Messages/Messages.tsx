@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import parseISO from "date-fns/parseISO";
-import useDataLoader from "hooks/useDataLoader";
 import getAllMessagesRequest from "api/requests/getAllMessages";
+import addMessageRequest from "api/requests/addMessage";
 import MessagesList from "components/MessagesList";
 import InfoMessage from "components/InfoMessage";
 import Title from "components/Title";
 import useTheme from "hooks/useTheme";
 import useQueryParams from "hooks/useQueryParams";
 import { Message } from "api/types";
+import AddMessageModal from "./modals/AddMessageModal";
 import PlusCircleIcon from "../../icons/PlusCircleIcon";
 import { filterMessagesByPeriod } from "./utils";
-import { MessageFilterPeriod } from "./Messages.types";
+import { AddMessageForm, MessageFilterPeriod } from "./Messages.types";
 import * as Styled from "./Messages.styled";
 
 const availableFilters: Record<MessageFilterPeriod, string> = {
@@ -21,9 +22,12 @@ const availableFilters: Record<MessageFilterPeriod, string> = {
 };
 
 const Messages: React.FC = () => {
+  const [isOpenedAddMessageModal, setIsOpenedAddMessageModal] = useState(false);
   const [activeFilterTab, setActiveFilterTab] = useState<MessageFilterPeriod>("all");
   const [filteredMessages, setFilteredMessages] = useState<Message[]>([]);
-  const { state: { data: messages, isLoading, error }, makeRequest } = useDataLoader(getAllMessagesRequest);
+  const [messages, setMessages] = useState<Message[] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const { colors: { simpleBlack } } = useTheme();
   const { queryParams, setQueryParams } = useQueryParams();
 
@@ -42,7 +46,17 @@ const Messages: React.FC = () => {
   }, [activeFilterTab, queryParams]);
 
   useEffect(() => {
-    makeRequest();
+    getAllMessagesRequest()
+      .then((data) => {
+        setMessages(data);
+        setIsLoading(false);
+        setError(null);
+      })
+      .catch(() => {
+        setMessages(null);
+        setIsLoading(false);
+        setError("Произошла ошибка во время получения списка сообщений");
+      });
   }, []);
 
   useEffect(() => {
@@ -65,14 +79,32 @@ const Messages: React.FC = () => {
     });
   };
 
+  const handleAddNewMessage = async (formValues: AddMessageForm) => {
+    try {
+      const newMessage = await addMessageRequest(formValues.text);
+      setMessages([...messages!, newMessage]);
+    } catch {
+      setMessages(null);
+      setError("не получилось добавить сообщение");
+    }
+  };
+
   return (
     <>
+      {isOpenedAddMessageModal && (
+        <AddMessageModal
+          onClose={() => setIsOpenedAddMessageModal(false)}
+          onSubmit={handleAddNewMessage}
+        />
+      )}
       <Styled.Header>
         <Styled.TitleContainer>
           <Title type="h1" withoutPadding>Сообщения</Title>
-          <Styled.AddIconWrapper>
-            <PlusCircleIcon size="l" baseColor={simpleBlack} />
-          </Styled.AddIconWrapper>
+          {messages && !isLoading && !error && (
+            <Styled.AddIconWrapper onClick={() => setIsOpenedAddMessageModal(true)}>
+              <PlusCircleIcon size="l" baseColor={simpleBlack} />
+            </Styled.AddIconWrapper>
+          )}
         </Styled.TitleContainer>
         <Styled.Tabs
           activeItem={activeFilterTab}
