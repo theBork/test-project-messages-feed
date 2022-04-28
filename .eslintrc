@@ -3,8 +3,18 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
+  "extends": ["airbnb", "airbnb-typescript"],
   "plugins": [
     "@typescript-eslint",
     "react-hooks"
-  ]
+  ],
+  "rules": {
+    "@typescript-eslint/quotes": ["error", "double"],
+    "arrow-parens": ["error", "as-needed", { "requireForBlockBody":  true }],
+    "import/prefer-default-export": "off",
+    "no-restricted-exports": "off",
+    "object-curly-newline": "off",
+    "react/function-component-definition": "off",
+    "react/require-default-props": "off"
+  }
 }
