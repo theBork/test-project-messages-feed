@@ -3,6 +3,7 @@ import { Router } from "@reach/router";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import theme from "constants/theme";
 import MessagesPage from "./pages/MessagesPage/MessagesPage";
+import AuthorPage from "./pages/AuthorPage";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -17,7 +18,8 @@ function App() {
     <ThemeProvider {...{ theme }}>
       <GlobalStyle />
       <Router>
-        <MessagesPage path="/" />
+        <MessagesPage default path="/" />
+        <AuthorPage path="/authors/:authorId" />
       </Router>
     </ThemeProvider>
   );

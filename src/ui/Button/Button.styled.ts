@@ -26,19 +26,19 @@ export const Button = styled(Text).attrs<ButtonProps>(({ size }) => ({
     switch (fill) {
       case "transparent": return css`
         background-color: transparent;
-        border: transparent;
+        border: 1px solid transparent;
         color: ${theme.colors.buttonPrimary};
       `;
 
       case "outline": return css`
         background-color: transparent;
-        border: ${theme.colors.buttonPrimary};
+        border: 1px solid ${theme.colors.buttonPrimary};
         color: ${theme.colors.buttonPrimary};
       `;
 
       case "fill": default: return css`
         background-color: ${theme.colors.buttonPrimary};
-        border: ${theme.colors.buttonPrimary};
+        border: 1px solid ${theme.colors.buttonPrimary};
         color: ${theme.colors.simpleWhite};
       `;
     }

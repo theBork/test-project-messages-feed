@@ -1,12 +1,12 @@
 import React from "react";
 import { RouteComponentProps } from "@reach/router";
 import BaseLayout from "layouts/BaseLayout";
-import Messages from "containers/Messages";
+import Author from "containers/Author";
 
-const MessagesPage: React.FC<RouteComponentProps> = () => (
+const AuthorPage: React.FC<RouteComponentProps> = () => (
   <BaseLayout>
-    <Messages />
+    <Author />
   </BaseLayout>
 );
 
-export default MessagesPage;
+export default AuthorPage;

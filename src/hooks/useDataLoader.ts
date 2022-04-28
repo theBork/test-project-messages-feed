@@ -6,7 +6,7 @@ interface State<T = unknown> {
   error: string | null;
 }
 
-function useDataLoader<A extends (...args: unknown[]) => Promise<unknown>>(asyncFunction: A) {
+function useDataLoader<A extends (...args: any[]) => Promise<unknown>>(asyncFunction: A) {
   const [state, setState] = useState<State<Awaited<ReturnType<A>>>>({ data: null, isLoading: true, error: null });
 
   const makeRequest = (...args: Parameters<A>) => {

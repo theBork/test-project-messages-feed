@@ -10,7 +10,9 @@
       "api/*": ["./src/api/*"],
       "components/*": ["./src/components/*"],
       "constants/*": ["./src/constants/*"],
+      "containers/*": ["./src/containers/*"],
       "hooks/*": ["./src/hooks/*"],
+      "layouts/*": ["./src/layouts/*"],
       "ui/*": ["./src/ui/*"]
     },
     "allowJs": true,
