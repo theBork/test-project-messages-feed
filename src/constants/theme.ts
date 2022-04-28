@@ -16,6 +16,7 @@ export default {
     textTertiary: "#afafaf",
     simpleBlack: "#000000",
     simpleWhite: "#ffffff",
+    error: "#ff0000",
     overlay40: "rgba(0, 0, 0, 0.4)",
   },
   zIndices: {

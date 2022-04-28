@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { zIndex } from "styled-system";
 import Box from "ui/Box";
 import TabsComponent from "components/Tabs";
 
@@ -7,8 +8,9 @@ const TITLE_CONTAINER_HEIGHT_PX = 60;
 export const Header = styled(Box).attrs({
   px: 8,
   bg: "simpleWhite",
-  zIndex: "header",
+  zIndex: "overlay",
 })`
+  ${zIndex};
   position: fixed;
   left: 0;
   top: 0;

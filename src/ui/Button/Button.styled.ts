@@ -4,6 +4,7 @@ import Text from "ui/Text";
 import { ButtonSize, ButtonFill } from "./Button.types";
 
 interface ButtonProps {
+  disabled?: boolean;
   size: ButtonSize;
   fill: ButtonFill;
 }
@@ -17,6 +18,11 @@ export const Button = styled(Text).attrs<ButtonProps>(({ size }) => ({
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+  
+  ${({ disabled }) => disabled && css`
+    pointer-events: none;
+    opacity: 0.3;
+  `};
   
   &:hover {
     opacity: 0.6;
