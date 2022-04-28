@@ -9,6 +9,10 @@ export default {
   },
   colors: {
     buttonPrimary: "#0000ff",
+    cardPrimary: "#dcd8d8",
+    textPrimary: "#1c1919",
+    textSecondary: "#afafaf",
+    textTertiary: "#afafaf",
     simpleBlack: "#000000",
     simpleWhite: "#ffffff",
     overlay40: "rgba(0, 0, 0, 0.4)",

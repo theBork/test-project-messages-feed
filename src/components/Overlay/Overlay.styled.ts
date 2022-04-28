@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {zIndex} from "styled-system";
+import { zIndex } from "styled-system";
 import Box from "ui/Box";
 
 export const Overlay = styled(Box).attrs({

@@ -12,9 +12,12 @@
     "@typescript-eslint/quotes": ["error", "double"],
     "arrow-parens": ["error", "as-needed", { "requireForBlockBody":  true }],
     "import/prefer-default-export": "off",
+    "max-len": "off",
     "no-restricted-exports": "off",
     "object-curly-newline": "off",
     "react/function-component-definition": "off",
-    "react/require-default-props": "off"
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }
