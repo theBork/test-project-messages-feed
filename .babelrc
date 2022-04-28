@@ -5,6 +5,7 @@
       "alias": {
         "components": "./src/components",
         "constants": "./src/constants",
+        "hooks": "./src/hooks",
         "ui": "./src/ui"
       }
     }]
